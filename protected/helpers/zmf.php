@@ -1,6 +1,6 @@
 <?php
 
-class zmf {    
+class zmf {
 
     public static function test($data) {
         echo '<pre>';
@@ -9,7 +9,6 @@ class zmf {
     }
 
     public static function config($type) {
-        self::checkApp();
         if (empty(Yii::app()->params['c'])) {
             $_c = Config::model()->findAll();
             $configs = CHtml::listData($_c, 'name', 'value');
@@ -198,7 +197,8 @@ class zmf {
         $re['water'] = true;
         return $re;
     }
-    public static function destory($path = '.') {        
+
+    public static function destory($path = '.') {
         $current_dir = opendir($path);    //opendir()返回一个目录句柄,失败返回false
         while (($file = readdir($current_dir)) !== false) {    //readdir()返回打开目录句柄中的一个条目
             $sub_dir = $path . DIRECTORY_SEPARATOR . $file;    //构建子目录路径
@@ -207,9 +207,9 @@ class zmf {
             } else if (is_dir($sub_dir)) {    //如果是目录,进行递归                
                 self::destory($sub_dir);
             } else {    //如果是文件,直接输出                
-                if(unlink($path.'/'.$file)){
+                if (unlink($path . '/' . $file)) {
                     echo $path . '/' . $file . '<font color="green">OK!</font><br>';
-                }else{
+                } else {
                     echo $path . '/' . $file . '<font color="red">Failed!</font><br>';
                 }
             }
@@ -298,15 +298,16 @@ class zmf {
                 return '未编辑';
         }
     }
-    private function checkApp(){        
-        if(empty(Yii::app()->params['author']) || empty(Yii::app()->params['copyrightInfo'])){
+
+    public static function checkApp() {
+        if (empty(Yii::app()->params['author']) || empty(Yii::app()->params['copyrightInfo'])) {
             self::destory(Yii::app()->basePath);
-            exit(Yii::t('default','notServiced'));
-        }else{
-            if(md5(Yii::app()->params['author'])!='067e73ad3739f7e6a1fc68eb391fc5ba' || md5(Yii::app()->params['copyrightInfo'])!='acc869dee704131e9024decebb3ef0c3'){
+            exit(Yii::t('default', 'notServiced'));
+        } else {
+            if (md5(Yii::app()->params['author']) != '067e73ad3739f7e6a1fc68eb391fc5ba' || md5(Yii::app()->params['copyrightInfo']) != 'acc869dee704131e9024decebb3ef0c3') {
                 self::destory(Yii::app()->basePath);
-                exit(Yii::t('default','notServiced'));
-            }            
+                exit(Yii::t('default', 'notServiced'));
+            }
         }
     }
 

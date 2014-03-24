@@ -1,11 +1,10 @@
 <?php
 
 class H extends CController {
-
     public $layout = 'main';
     protected $_noColButOther;
-
     public function init() {
+        zmf::checkApp();
         $this->checkPower('login');
     }
 
@@ -62,11 +61,11 @@ class H extends CController {
     }
 
     static public function jsonOutPut($status = 0, $msg = '', $end = true, $return = false) {
-        T::jsonOutPut($status , $msg , $end , $return );
+        T::jsonOutPut($status, $msg, $end, $return);
     }
-    
+
     static public function message($action = 1, $content = '', $redirect = 'javascript:history.back(-1);', $timeout = 3) {
-        T::message($action , $content, $redirect, $timeout);
+        T::message($action, $content, $redirect, $timeout);
     }
 
 }

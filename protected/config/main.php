@@ -13,7 +13,7 @@ return array(
         'application.components.*',
         'application.helpers.*'
     ),
-    'modules' => array(        
+    'modules' => array(
         'admin' => array(
             'class' => 'application.modules.admin.AdminModule',
             'defaultController' => 'index'
@@ -28,14 +28,7 @@ return array(
         'user' => array(
             'allowAutoLogin' => true,
         ),
-        'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=zmf',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '056911',
-            'charset' => 'utf8',
-            'tablePrefix' => 'pre_',
-        ),
+        'db' => require(dirname(__FILE__) . '/db.php'),
         'errorHandler' => array(
             'errorAction' => 'error/index',
         ),
@@ -45,27 +38,14 @@ return array(
             'params' => array(
             )
         ),
-        /*
-          'urlManager'=>array(
-          'urlFormat'=>'path',
-          'showScriptName' => false, //隐藏index.php
-          'urlSuffix' => '.html', //后缀
-          'rules'=>array(
-          'post/<id:\d+>'=>'posts/index',
-          'publish'=>'posts/add',
-          'posts/<colid:.*?>'=>'posts/all',
-          'tag/<tagid:.*?>'=>'posts/all',
-          '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-          ),
-          ),
-         */
+        'urlManager' => require(dirname(__FILE__) . '/rewrite.php'),
         'filecache' => array(
             'class' => 'system.caching.CFileCache',
             'directoryLevel' => '2', //缓存文件的目录深度  
         ),
         'clientScript' => array(
             'scriptMap' => array(
-                'pager.css'=>false,            
+                'pager.css' => false,
             ),
         ),
         'log' => array(
