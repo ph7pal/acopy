@@ -132,7 +132,7 @@ class Columns extends CActiveRecord {
         } else {
             return false;
         }
-        $sql = "SELECT * FROM {{columns}} {$where} ORDER BY `order` ASC LIMIT {$limit}";
+        $sql = "SELECT * FROM {{columns}} {$where} ORDER BY `cTime` DESC LIMIT {$limit}";
         $cols = Yii::app()->db->createCommand($sql)->queryAll();
         if (!$second) {
             zmf::setFCache("getColsBy{$po}{$ext}", $cols);

@@ -45,7 +45,7 @@ class PostsController extends T {
             $pages = new CPagination(count($db));
             $_size=zmf::config('perPageNum');
             $pageSize=isset($_size) ? $_size : 10;
-            $pages->pageSize = $pageSize;
+            $pages->pageSize = intval($pageSize);
             $pages->applylimit($criteria);
             $com = Yii::app()->db->createCommand($sql . " LIMIT :offset,:limit");
             $com->bindValue(':offset', $pages->currentPage * $pages->pageSize);

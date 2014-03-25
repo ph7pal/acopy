@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.10.2
+-- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 25 日 09:28
--- 服务器版本: 5.0.45
--- PHP 版本: 5.2.3
+-- 生成日期: 2014 年 03 月 25 日 12:46
+-- 服务器版本: 5.0.51
+-- PHP 版本: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -42,9 +42,9 @@ CREATE TABLE `pre_ads` (
 -- 导出表中的数据 `pre_ads`
 -- 
 
-INSERT INTO `pre_ads` VALUES (6, '全屏美女', 'http://newsoul.cn', '12', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640108, 'flash');
-INSERT INTO `pre_ads` VALUES (7, '全屏美女2', 'http://newsoul.cn', '13', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640542, 'flash');
-INSERT INTO `pre_ads` VALUES (8, '全屏美女3', 'http://newsoul.cn', '14', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640562, 'flash');
+INSERT INTO `pre_ads` VALUES (6, '全屏展示一', 'http://newsoul.cn', '14', '', '', '这里是一些描述', 0, 0, 0, 'topbar', 0, 1, 1395751264, 'flash');
+INSERT INTO `pre_ads` VALUES (7, '全屏展示二', '', '15', '', '', '这里是一些描述', 0, 0, 0, 'topbar', 0, 1, 1395751354, 'flash');
+INSERT INTO `pre_ads` VALUES (8, '全屏展示三', '', '16', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395751386, 'flash');
 
 -- --------------------------------------------------------
 
@@ -68,15 +68,17 @@ CREATE TABLE `pre_attachments` (
   `status` tinyint(3) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `logid` (`logid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- 
 -- 导出表中的数据 `pre_attachments`
 -- 
 
-INSERT INTO `pre_attachments` VALUES (12, 2, 6, '532fc760bea9e.jpg', '532fc760bea9e.jpg', '', 0, 0, 'ads', 0, 0, 1395640160, 1);
-INSERT INTO `pre_attachments` VALUES (13, 2, 7, '532fc8eb6f8e7.jpg', '532fc8eb6f8e7.jpg', '', 0, 0, 'ads', 0, 0, 1395640555, 1);
-INSERT INTO `pre_attachments` VALUES (14, 2, 8, '532fc8fd6e91e.jpg', '532fc8fd6e91e.jpg', '', 0, 0, 'ads', 0, 0, 1395640573, 1);
+INSERT INTO `pre_attachments` VALUES (12, 2, 27, '533172a188dd8.jpg', '533172a188dd8.jpg', '', 0, 0, 'coverimg', 0, 0, 1395749537, 1);
+INSERT INTO `pre_attachments` VALUES (13, 2, 28, '533172b5f1ec4.jpg', '533172b5f1ec4.jpg', '', 0, 0, 'coverimg', 0, 0, 1395749557, 1);
+INSERT INTO `pre_attachments` VALUES (14, 2, 6, '533179b08b09c.jpg', '533179b08b09c.jpg', '', 0, 0, 'ads', 0, 0, 1395751344, 1);
+INSERT INTO `pre_attachments` VALUES (15, 2, 7, '533179d2ecdc7.jpg', '533179d2ecdc7.jpg', '', 0, 0, 'ads', 0, 0, 1395751378, 1);
+INSERT INTO `pre_attachments` VALUES (16, 2, 8, '53317a142d1c7.jpg', '53317a142d1c7.jpg', '', 0, 0, 'ads', 0, 0, 1395751444, 1);
 
 -- --------------------------------------------------------
 
@@ -99,14 +101,16 @@ CREATE TABLE `pre_columns` (
   `status` tinyint(1) NOT NULL default '0',
   `cTime` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 -- 
 -- 导出表中的数据 `pre_columns`
 -- 
 
-INSERT INTO `pre_columns` VALUES (16, 0, ' gong xiang ', 'FTP共享', '', 'thumb', 'topbar', '', 0, 0, 0, 1, 1395640630);
-INSERT INTO `pre_columns` VALUES (17, 0, 'guan yu wo men ', '关于我们', '', 'thumb', 'topbar', '', 0, 0, 0, 1, 1395640658);
+INSERT INTO `pre_columns` VALUES (16, 0, 'guan yu wo men ', '关于我们', '', 'page', 'topbar', '', 0, 0, 0, 1, 1395747268);
+INSERT INTO `pre_columns` VALUES (17, 0, ' gong xiang ', 'FTP共享', '', 'thumb', 'topbar', '', 0, 0, 0, 1, 1395747330);
+INSERT INTO `pre_columns` VALUES (18, 17, '  ', '2014/02', '', 'thumb', 'main', '', 0, 0, 0, 1, 1395747353);
+INSERT INTO `pre_columns` VALUES (19, 17, '  ', '2014/03', '', 'thumb', 'main', '', 0, 0, 0, 1, 1395748305);
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,7 @@ CREATE TABLE `pre_config` (
   `description` varchar(255) NOT NULL default '',
   `classify` char(16) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 -- 
 -- 导出表中的数据 `pre_config`
@@ -136,22 +140,23 @@ INSERT INTO `pre_config` VALUES (10, 'email', 'admin@admin.com', '', 'siteinfo')
 INSERT INTO `pre_config` VALUES (11, 'beian', '渝备12345678', '', 'siteinfo');
 INSERT INTO `pre_config` VALUES (12, 'copyright', '2012-2013', '', 'siteinfo');
 INSERT INTO `pre_config` VALUES (13, 'baseurl', 'http://localhost/acopy/', '', 'baseinfo');
-INSERT INTO `pre_config` VALUES (14, 'userDefaultGroup', '5', '', 'baseinfo');
-INSERT INTO `pre_config` VALUES (15, 'closeSite', '1', '', 'base');
-INSERT INTO `pre_config` VALUES (16, 'mobile', '1', '', 'base');
-INSERT INTO `pre_config` VALUES (17, 'attachDir', 'http://localhost/acopy/attachments/', '', 'base');
-INSERT INTO `pre_config` VALUES (18, 'service_aim_cn', '致力于提升客户品牌形象、实现客户商业目标!', '', 'base');
-INSERT INTO `pre_config` VALUES (19, 'service_aim_en', 'Commitment to enhance customer brand image,customer business goals!', '', 'base');
-INSERT INTO `pre_config` VALUES (20, 'imgUploadNum', '1', '', 'upload');
-INSERT INTO `pre_config` VALUES (21, 'imgMinWidth', '300', '', 'upload');
-INSERT INTO `pre_config` VALUES (22, 'imgMinHeight', '300', '', 'upload');
-INSERT INTO `pre_config` VALUES (23, 'imgAllowTypes', '*.jpg;*.png;*.jpeg', '', 'upload');
-INSERT INTO `pre_config` VALUES (24, 'imgThumbSize', '124,200,300,600,origin', '', 'upload');
-INSERT INTO `pre_config` VALUES (25, 'imgMaxSize', '1024000', '', 'upload');
-INSERT INTO `pre_config` VALUES (26, 'imgQuality', '80', '', 'upload');
-INSERT INTO `pre_config` VALUES (27, 'logo', 'common/images/logo.png', '', 'base');
-INSERT INTO `pre_config` VALUES (28, 'userDefaultGroup', '5', '', 'base');
-INSERT INTO `pre_config` VALUES (29, 'perPageNum', '10', '', 'base');
+INSERT INTO `pre_config` VALUES (14, 'version', 'Alpha 1.0', '', 'baseinfo');
+INSERT INTO `pre_config` VALUES (15, 'imgUploadNum', '1', '', 'upload');
+INSERT INTO `pre_config` VALUES (16, 'imgMinWidth', '300', '', 'upload');
+INSERT INTO `pre_config` VALUES (17, 'imgMinHeight', '300', '', 'upload');
+INSERT INTO `pre_config` VALUES (18, 'imgAllowTypes', '*.jpg;*.png;*.jpeg', '', 'upload');
+INSERT INTO `pre_config` VALUES (19, 'imgThumbSize', '124,200,300,600,origin', '', 'upload');
+INSERT INTO `pre_config` VALUES (20, 'imgMaxSize', '1024000', '', 'upload');
+INSERT INTO `pre_config` VALUES (21, 'imgQuality', '80', '', 'upload');
+INSERT INTO `pre_config` VALUES (22, 'closeSite', '1', '', 'base');
+INSERT INTO `pre_config` VALUES (23, 'mobile', '1', '', 'base');
+INSERT INTO `pre_config` VALUES (24, 'userDefaultGroup', '5', '', 'base');
+INSERT INTO `pre_config` VALUES (25, 'attachDir', 'http://localhost/acopy/attachments/', '', 'base');
+INSERT INTO `pre_config` VALUES (26, 'service_aim_cn', '致力于提升客户品牌形象、实现客户商业目标!', '', 'base');
+INSERT INTO `pre_config` VALUES (27, 'service_aim_en', 'Commitment to enhance customer brand image,customer business goals!', '', 'base');
+INSERT INTO `pre_config` VALUES (28, 'perPageNum', '10', '', 'base');
+INSERT INTO `pre_config` VALUES (29, 'logo', 'common/images/logo.png', '', 'base');
+INSERT INTO `pre_config` VALUES (30, 'closeSiteReason', '系统正在维护中，请稍后再访问！', '', 'base');
 
 -- --------------------------------------------------------
 
@@ -273,13 +278,17 @@ CREATE TABLE `pre_posts` (
   `status` tinyint(1) NOT NULL,
   `last_update_time` int(10) unsigned NOT NULL default '0',
   `cTime` int(10) unsigned NOT NULL default '0',
+  `attachid` int(11) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 -- 
 -- 导出表中的数据 `pre_posts`
 -- 
 
+INSERT INTO `pre_posts` VALUES (27, 18, 2, '', '', '这是一篇测试文章', '', '', 0, '', '', '', '', '', '', '', '', 'coverimg/600/58/52b5a7391f539.jpg', 1, 0, 1, 1, 0, 1395749489, 12);
+INSERT INTO `pre_posts` VALUES (28, 18, 2, '', '', '这篇文章是没有正文的', '', '', 0, '', '', '', '', '', '', '', '', 'coverimg/600/58/52b5a7391f539.jpg', 6, 0, 1, 1, 0, 1395749544, 13);
+INSERT INTO `pre_posts` VALUES (29, 19, 2, '', '', '难道我可以写文章么', '', '', 0, '', '', '', '', '', '', '', '', 'coverimg/600/58/52b5a7391f539.jpg', 1, 0, 1, 1, 0, 1395751146, 0);
 
 -- --------------------------------------------------------
 
@@ -327,12 +336,30 @@ CREATE TABLE `pre_user_action` (
   `cTime` int(11) unsigned NOT NULL,
   `ip` char(16) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 -- 
 -- 导出表中的数据 `pre_user_action`
 -- 
 
+INSERT INTO `pre_user_action` VALUES (1, 2, 16, 'editcolumns', '编辑栏目', 1395747327, '2130706433');
+INSERT INTO `pre_user_action` VALUES (2, 2, 17, 'editcolumns', '编辑栏目', 1395747351, '2130706433');
+INSERT INTO `pre_user_action` VALUES (3, 2, 18, 'editcolumns', '编辑栏目', 1395747369, '2130706433');
+INSERT INTO `pre_user_action` VALUES (4, 2, 0, 'setting', '更新设置', 1395748048, '2130706433');
+INSERT INTO `pre_user_action` VALUES (5, 2, 0, 'setting', '更新设置', 1395748061, '2130706433');
+INSERT INTO `pre_user_action` VALUES (6, 2, 0, 'setting', '更新设置', 1395748082, '2130706433');
+INSERT INTO `pre_user_action` VALUES (7, 2, 0, 'setting', '更新设置', 1395748165, '2130706433');
+INSERT INTO `pre_user_action` VALUES (8, 2, 0, 'setting', '更新设置', 1395748216, '2130706433');
+INSERT INTO `pre_user_action` VALUES (9, 2, 19, 'editcolumns', '编辑栏目', 1395748313, '2130706433');
+INSERT INTO `pre_user_action` VALUES (10, 2, 0, 'setting', '更新设置', 1395748842, '2130706433');
+INSERT INTO `pre_user_action` VALUES (11, 2, 0, 'setting', '更新设置', 1395748946, '2130706433');
+INSERT INTO `pre_user_action` VALUES (12, 2, 0, 'setting', '更新设置', 1395749476, '2130706433');
+INSERT INTO `pre_user_action` VALUES (13, 2, 27, 'editposts', '编辑文章', 1395749541, '2130706433');
+INSERT INTO `pre_user_action` VALUES (14, 2, 28, 'editposts', '编辑文章', 1395749560, '2130706433');
+INSERT INTO `pre_user_action` VALUES (15, 2, 29, 'editposts', '编辑文章', 1395751159, '2130706433');
+INSERT INTO `pre_user_action` VALUES (16, 2, 6, 'editads', '新增展示', 1395751348, '2130706433');
+INSERT INTO `pre_user_action` VALUES (17, 2, 7, 'editads', '新增展示', 1395751383, '2130706433');
+INSERT INTO `pre_user_action` VALUES (18, 2, 8, 'editads', '新增展示', 1395751448, '2130706433');
 
 -- --------------------------------------------------------
 

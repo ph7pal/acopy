@@ -8,15 +8,16 @@
         	<?php 
                 $listposts=Posts::listPosts($info['id'],'id,title,redirect_url,cTime',0);
                 if(!empty($listposts)){
-                //$imgs=Attachments::getAlbumImgs(2);
                 foreach($listposts as $key=>$_list){
                    $faceImg=  Attachments::getFaceImg($_list['id']); 
                     ?>
             <li>
                 <p>
                     <a href="<?php echo Yii::app()->createUrl('posts/show',array('id'=>$_list['id']));?>">
-                    <!--img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '300').'/'.$faceImg['filePath'];?>"/-->
-                    <img src="<?php echo $this->_theme->baseUrl?>/images/220.jpg"/></a>
+                        <?php if(!empty($faceImg)){?>
+                    <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '300').'/'.$faceImg['filePath'];?>"/>
+                        <?php }else{ echo zmf::noImg();}?>
+                    </a>
                 </p>                    
                 <span>
                     <?php echo CHtml::link(zmf::subStr($_list['title'],10),array('posts/show','id'=>$_list['id']),array('target'=>'_blank'));?>

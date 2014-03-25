@@ -20,7 +20,7 @@ class IndexController extends T {
     }
 
     public function actionIndex() {
-        $sql = "SELECT * FROM {{columns}} WHERE position='main' AND status=1 ORDER BY `order` DESC";
+        $sql = "SELECT * FROM {{columns}} WHERE position='main' AND status=1 ORDER BY `cTime` DESC";
         Posts::getAll(array('sql'=>$sql,'pageSize'=>1), $pages, $mainCols);
 //        $_mainCols=Columns::getColsByPosition('main',true);
 //        zmf::test($_mainCols);

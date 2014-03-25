@@ -10,7 +10,11 @@ if (!empty($listposts)) {
 
         <div class="listItem">
             <a href="<?php echo Yii::app()->createUrl('posts/show', array('id' => $_list['id'])); ?>">
-                <div class="faceimg"><img src="<?php echo $this->_theme->baseUrl ?>/images/220.jpg" width="110"></div>
+                <div class="faceimg">
+                    <?php if(!empty($faceImg)){?>
+                        <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '300').'/'.$faceImg['filePath'];?>"/>
+                        <?php }else{ echo zmf::noImg();}?>                    
+                </div>
             </a>
             <ul class="list_b">
                 <a href="<?php echo Yii::app()->createUrl('posts/show', array('id' => $_list['id'])); ?>" class="dl">

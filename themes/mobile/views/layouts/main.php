@@ -22,7 +22,7 @@
         <div class="zmf">
             <!--头-->
             <div id="header" class="header">
-                <div class="logo"></div>
+                <a href="<?php echo Yii::app()->homeUrl;?>"><div class="logo"></div></a>
                 <ul class="nav">
                     <li><a href="<?php echo Yii::app()->homeUrl ?>"><h3>首页</h3></a></li>
                     <?php

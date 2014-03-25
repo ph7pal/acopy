@@ -41,15 +41,15 @@ jQuery(".banner").hover(function(){jQuery(this).find(".prev,.next").stop(true,tr
       </div>
       <div class="con">
         <?php if($mc['classify']=='page'){
-            $page=Posts::getPage($mc['id']);    
-            $faceimg=  Attachments::getFaceImg($page['id']);
+            //$page=Posts::getPage($mc['id']);    
+            //$faceimg=  Attachments::getFaceImg($page['id']);
             if(!empty($faceimg)){
                 $dir=zmf::uploadDirs($faceimg['logid'], 'site', $faceimg['classify'], '124').'/'.$faceimg['filePath'];
             echo '<img src="'.$dir.'"/>';
             }
             echo '<p>'.$page['intro'].'</p>';
         }else{?>  
-        <?php $colitems=  Posts::allPosts($mc['first']['id']);?>  
+        <?php //$colitems=  Posts::allPosts($mc['first']['id']);?>  
         <ul>
           <?php if(!empty($colitems)){foreach($colitems as $ci){?>  
           <li>

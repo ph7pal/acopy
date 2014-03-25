@@ -101,7 +101,7 @@ class zmf {
     }
 
     public static function noImg($type = '') {
-        return CHtml::image(self::config('baseurl') . '/assets/images/nopic.gif', '暂无图片', array('width' => '124px'));
+        return CHtml::image(self::config('baseurl') . 'common/images/noimg.png', '暂无图片');
     }
 
     //fileCache

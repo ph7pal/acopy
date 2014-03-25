@@ -20,8 +20,10 @@ background: url(<?php echo zmf::config('baseurl').zmf::config('logo');?>) no-rep
 <!--头-->
 <div id="header" class="header">
   <div class="wrap">
+    <a href="<?php echo Yii::app()->homeUrl;?>">  
     <div class="logo floatL">
     </div>
+    </a> 
     <div class="nav floatR">
       <div class="clear">
         <dl class="tnLeft">

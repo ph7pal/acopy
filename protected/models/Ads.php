@@ -13,7 +13,7 @@ class Ads extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('title, url, position', 'required'),
+            array('title, attachid, position', 'required'),
             array('status', 'numerical', 'integerOnly' => true),
             array('url', 'url'),
             array('title', 'length', 'max' => 50),

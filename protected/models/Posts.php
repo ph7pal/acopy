@@ -130,7 +130,7 @@ class Posts extends CActiveRecord {
         } else {
             $_limit = "LIMIT {$limit}";
         }
-        $sql = "SELECT {$field} FROM {{posts}} WHERE colid={$colid} AND attachid!=0 AND status=1 ORDER BY cTime DESC {$_limit}";
+        $sql = "SELECT {$field} FROM {{posts}} WHERE colid={$colid} AND status=1 ORDER BY cTime DESC {$_limit}";
         $items = Yii::app()->db->createCommand($sql)->queryAll();
         return $items;
     }
