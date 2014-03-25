@@ -14,6 +14,11 @@
         <link rel="stylesheet" href="<?php echo $this->_theme->baseUrl ?>/css/style.css">
     </head>
     <body>
+    	<style>
+			.logo {
+			background: url(<?php echo zmf::config('baseurl').zmf::config('logo');?>) no-repeat center center;
+			}
+		</style>
         <div class="zmf">
             <!--头-->
             <div id="header" class="header">

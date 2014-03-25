@@ -43,7 +43,9 @@ class PostsController extends T {
             $sql = "SELECT * FROM {{posts}} WHERE {$where} AND status=1 ORDER BY cTime DESC";
             $db = Yii::app()->db->createCommand($sql)->queryAll();
             $pages = new CPagination(count($db));
-            $pages->pageSize = 10;
+            $_size=zmf::config('perPageNum');
+            $pageSize=isset($_size) ? $_size : 10;
+            $pages->pageSize = $pageSize;
             $pages->applylimit($criteria);
             $com = Yii::app()->db->createCommand($sql . " LIMIT :offset,:limit");
             $com->bindValue(':offset', $pages->currentPage * $pages->pageSize);

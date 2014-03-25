@@ -1,5 +1,16 @@
 <h3>网站运行基本设置</h3>
 <?php echo CHtml::hiddenField('type',$type);?>
+<div class="" style="clear:both">
+	<label>网站LOGO：</label>
+	<div id="logo_upload"></div>
+	<div id="fileQueue" style="clear:both;"></div>
+	<div id="fileSuccess" style="clear:both;">
+	<?php $logo=$c['logo'];if(!empty($logo)){?>
+	<img src="<?php echo zmf::config('baseurl').$logo;?>"/>
+	<?php }?>	
+	</div>	
+	<input class="form-control" type="hidden" name="logo" id="logo" value="<?php echo $c['logo'];?>"/>
+</div>
 <p><label>站点状态：</label>
     <select name="closeSite" id="closeSite">
         <option value="0" <?php if($c['closeSite']=='0'){?>selected="selected"<?php }?>>关闭</option>
@@ -13,6 +24,17 @@
         <option value="1" <?php if($c['mobile']=='1'){?>selected="selected"<?php }?>>开启</option>
     </select>
 </p>
+<p><label>新用户默认组别：</label>
+    <?php echo CHtml::dropDownList('userDefaultGroup',$c['userDefaultGroup'],UserGroup::getGroups(true),array('options' => array($info['userDefaultGroup']=>array('selected'=>true)))); ?>
+</p>
 <p><label>附件地址前缀：</label><input class="form-control" name="attachDir" id="attachDir" value="<?php echo $c['attachDir'];?>"/></p>
 <p><label>服务宗旨(中文)：</label><input class="form-control" name="service_aim_cn" id="service_aim_cn" value="<?php echo $c['service_aim_cn'];?>"/></p>
 <p><label>服务宗旨(英文)：</label><input class="form-control" name="service_aim_en" id="service_aim_en" value="<?php echo $c['service_aim_en'];?>"/></p>
+<p><label>分页数量：</label><input class="form-control" name="perPageNum" id="perPageNum" value="<?php echo $c['perPageNum'];?>"/></p>
+<script>
+    var imgUploadUrl="<?php echo Yii::app()->createUrl('attachments/upload',array('type'=>'logo'));?>";  	
+    $(document).ready(
+    function(){    	
+    	myUploadify('logo_upload','logo',1);
+    });  
+</script>

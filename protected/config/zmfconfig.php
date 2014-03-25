@@ -22,5 +22,7 @@ return array(
 'imgThumbSize'=> '124,200,300,600,origin',
 'imgMaxSize'=> '1024000',
 'imgQuality'=> '80',
+'logo'=> 'common/images/logo.png',
+'perPageNum'=> '10',
 );
 ?>

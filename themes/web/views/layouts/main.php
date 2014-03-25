@@ -11,6 +11,11 @@
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/common/js/jquery.SuperSlide.2.1.js");?>
 </head>
 <body>
+<style>
+.logo {
+background: url(<?php echo zmf::config('baseurl').zmf::config('logo');?>) no-repeat center left;
+}
+</style>	
 <div class="zmf">
 <!--头-->
 <div id="header" class="header">
@@ -60,6 +65,10 @@
             <?php }?>
             </p>
             <?php }?>
+      <p>
+      	<?php $address=zmf::config('address');if(!empty($address)){ echo '地址：'.$address;}?>
+      	<?php $phone=zmf::config('phone');if(!empty($phone)){ echo '电话：'.$phone;}?>
+      	</p>      
       <p>
           <a href="<?php echo zmf::config('domain');?>" target="_blank"><?php echo zmf::config('sitename');?></a>
           <?php echo zmf::config('copyright');?>

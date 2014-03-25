@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 24 日 05:41
+-- 生成日期: 2014 年 03 月 25 日 09:28
 -- 服务器版本: 5.0.45
 -- PHP 版本: 5.2.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- 数据库: `zmfcms`
+-- 数据库: `acopy`
 -- 
 
 -- --------------------------------------------------------
@@ -36,7 +36,17 @@ CREATE TABLE `pre_ads` (
   `cTime` int(10) unsigned NOT NULL default '0',
   `classify` char(16) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+-- 
+-- 导出表中的数据 `pre_ads`
+-- 
+
+INSERT INTO `pre_ads` VALUES (6, '全屏美女', 'http://newsoul.cn', '12', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640108, 'flash');
+INSERT INTO `pre_ads` VALUES (7, '全屏美女2', 'http://newsoul.cn', '13', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640542, 'flash');
+INSERT INTO `pre_ads` VALUES (8, '全屏美女3', 'http://newsoul.cn', '14', '', '', '', 0, 0, 0, 'topbar', 0, 1, 1395640562, 'flash');
+
+-- --------------------------------------------------------
 
 -- 
 -- 表的结构 `pre_attachments`
@@ -58,8 +68,17 @@ CREATE TABLE `pre_attachments` (
   `status` tinyint(3) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `logid` (`logid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
+-- 
+-- 导出表中的数据 `pre_attachments`
+-- 
+
+INSERT INTO `pre_attachments` VALUES (12, 2, 6, '532fc760bea9e.jpg', '532fc760bea9e.jpg', '', 0, 0, 'ads', 0, 0, 1395640160, 1);
+INSERT INTO `pre_attachments` VALUES (13, 2, 7, '532fc8eb6f8e7.jpg', '532fc8eb6f8e7.jpg', '', 0, 0, 'ads', 0, 0, 1395640555, 1);
+INSERT INTO `pre_attachments` VALUES (14, 2, 8, '532fc8fd6e91e.jpg', '532fc8fd6e91e.jpg', '', 0, 0, 'ads', 0, 0, 1395640573, 1);
+
+-- --------------------------------------------------------
 
 -- 
 -- 表的结构 `pre_columns`
@@ -80,9 +99,14 @@ CREATE TABLE `pre_columns` (
   `status` tinyint(1) NOT NULL default '0',
   `cTime` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
--- --------------------------------------------------------
+-- 
+-- 导出表中的数据 `pre_columns`
+-- 
+
+INSERT INTO `pre_columns` VALUES (16, 0, ' gong xiang ', 'FTP共享', '', 'thumb', 'topbar', '', 0, 0, 0, 1, 1395640630);
+INSERT INTO `pre_columns` VALUES (17, 0, 'guan yu wo men ', '关于我们', '', 'thumb', 'topbar', '', 0, 0, 0, 1, 1395640658);
 
 -- --------------------------------------------------------
 
@@ -97,7 +121,7 @@ CREATE TABLE `pre_config` (
   `description` varchar(255) NOT NULL default '',
   `classify` char(16) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 -- 
 -- 导出表中的数据 `pre_config`
@@ -111,6 +135,23 @@ INSERT INTO `pre_config` VALUES (9, 'phone', '023-12345678', '', 'siteinfo');
 INSERT INTO `pre_config` VALUES (10, 'email', 'admin@admin.com', '', 'siteinfo');
 INSERT INTO `pre_config` VALUES (11, 'beian', '渝备12345678', '', 'siteinfo');
 INSERT INTO `pre_config` VALUES (12, 'copyright', '2012-2013', '', 'siteinfo');
+INSERT INTO `pre_config` VALUES (13, 'baseurl', 'http://localhost/acopy/', '', 'baseinfo');
+INSERT INTO `pre_config` VALUES (14, 'userDefaultGroup', '5', '', 'baseinfo');
+INSERT INTO `pre_config` VALUES (15, 'closeSite', '1', '', 'base');
+INSERT INTO `pre_config` VALUES (16, 'mobile', '1', '', 'base');
+INSERT INTO `pre_config` VALUES (17, 'attachDir', 'http://localhost/acopy/attachments/', '', 'base');
+INSERT INTO `pre_config` VALUES (18, 'service_aim_cn', '致力于提升客户品牌形象、实现客户商业目标!', '', 'base');
+INSERT INTO `pre_config` VALUES (19, 'service_aim_en', 'Commitment to enhance customer brand image,customer business goals!', '', 'base');
+INSERT INTO `pre_config` VALUES (20, 'imgUploadNum', '1', '', 'upload');
+INSERT INTO `pre_config` VALUES (21, 'imgMinWidth', '300', '', 'upload');
+INSERT INTO `pre_config` VALUES (22, 'imgMinHeight', '300', '', 'upload');
+INSERT INTO `pre_config` VALUES (23, 'imgAllowTypes', '*.jpg;*.png;*.jpeg', '', 'upload');
+INSERT INTO `pre_config` VALUES (24, 'imgThumbSize', '124,200,300,600,origin', '', 'upload');
+INSERT INTO `pre_config` VALUES (25, 'imgMaxSize', '1024000', '', 'upload');
+INSERT INTO `pre_config` VALUES (26, 'imgQuality', '80', '', 'upload');
+INSERT INTO `pre_config` VALUES (27, 'logo', 'common/images/logo.png', '', 'base');
+INSERT INTO `pre_config` VALUES (28, 'userDefaultGroup', '5', '', 'base');
+INSERT INTO `pre_config` VALUES (29, 'perPageNum', '10', '', 'base');
 
 -- --------------------------------------------------------
 
@@ -196,6 +237,11 @@ CREATE TABLE `pre_link` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+-- 
+-- 导出表中的数据 `pre_link`
+-- 
+
+
 -- --------------------------------------------------------
 
 -- 
@@ -230,9 +276,10 @@ CREATE TABLE `pre_posts` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
--- --------------------------------------------------------
+-- 
+-- 导出表中的数据 `pre_posts`
+-- 
 
--- --------------------------------------------------------
 
 -- --------------------------------------------------------
 

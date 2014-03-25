@@ -7,7 +7,3 @@
 <p><label>网站关键字：</label><textarea class="form-control" name="siteKeywords"><?php echo $c['siteKeywords'];?></textarea></p>
 <p><label>网站描述：</label><textarea class="form-control" name="siteDesc"><?php echo $c['siteDesc'];?></textarea></p>
 <p><label>网站版本：</label><input class="form-control" name="version" id="version" value="<?php echo $c['version'];?>"/></p>
-<p><label>新用户默认组别：</label>
-    <?php echo CHtml::dropDownList('userDefaultGroup',$c['userDefaultGroup'],UserGroup::getGroups(true),array('options' => array($info['userDefaultGroup']=>array('selected'=>true)))); ?>
-    
-</p>
