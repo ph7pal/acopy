@@ -94,7 +94,10 @@ class Attachments extends CActiveRecord
 		return parent::model($className);
 	}
         public function getFaceImg($keyid,$type='coverimg'){
-            $info=Attachments::model()->findByAttributes(array('logid'=>$keyid),'classify=:classify',array(':classify'=>$type));
+            $sql = "SELECT * FROM {{attachments}} WHERE logid='$keyid' AND classify='$type' AND status=1 ORDER BY `cTime` DESC LIMIT 1";
+            $info=Yii::app()->db->createCommand($sql)->queryAll();
+            $info=$info[0];
+            //$info=Attachments::model()->findByAttributes(array('logid'=>$keyid),'classify=:classify',array(':classify'=>$type));
             if(!$info){
                 return false;
             }else{

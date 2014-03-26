@@ -87,7 +87,7 @@ class AttachmentsController extends H {
                     $quality=isset($quality) ? $quality:100;
                     foreach ($dirs as $dk => $_dir) {
                         $image->resize($dk, $dk)->quality($quality);
-                        $image->save($_dir . '/' . $fileName);
+                        $image->save($_dir . '/' . $fileName,false);
                     }
                     $returnimg = zmf::uploadDirs($logid, 'site', $uptype, 124) . '/' . $fileName;
                     //zmf::delCache("attachTotal{$logid}");
