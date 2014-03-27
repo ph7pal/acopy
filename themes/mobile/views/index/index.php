@@ -3,8 +3,10 @@
 <div class="module clear">    
   <div class="wrap clear">
      <?php if(!empty($mainCols)){?> 
-     <?php foreach($mainCols as $mc){?> 
-     <?php if($mc['classify']!='thumb'){?>     
+     <?php foreach($mainCols as $mc){
+         if(!empty($seconds)){
+             $this->renderPartial('/posts/column',array('listposts'=>$seconds,'info'=>$mc));
+         }elseif($mc['classify']!='thumb'){?>     
      <div class="moduleBox">
       <div class="col">
         <div>
