@@ -74,12 +74,21 @@ class ColumnsController extends H {
             if (!$name OR $name == '') {
                 $name = tools::pinyin($title);
             }
+            $colid = zmf::filterInput($_POST['Columns']['colid']);
+            $_colid = zmf::filterInput($_POST['belongid']);
+            $columnid = zmf::filterInput($_POST['columnid']);
+            if ($colid == '0' OR !$colid) {
+                $colid = $columnid;
+            }
+            if(!$columnid){
+                $colid =$_colid;
+            }
             $intoData = array(
                 'title' => $title,
                 'second_title' => zmf::filterInput($_POST['Columns']['second_title'], 't', 1),
                 'name' => $name,
                 'position' => zmf::filterInput($_POST['Columns']['position'], 't', 1),
-                'belongid' => zmf::filterInput($_POST['Columns']['belongid']),
+                'belongid' => $colid,
                 'classify' => zmf::filterInput($_POST['Columns']['classify'], 't', 1),
                 'attachid' => zmf::filterInput($_POST['Columns']['attachid']),
                 'order' => zmf::filterInput($_POST['Columns']['order']),

@@ -36,20 +36,14 @@
         <tr>
             <td><?php echo $form->textArea($model,'intro',array('class'=>'form-control','value'=>$info['intro'])); ?></td><td><?php echo $form->error($model,'intro'); ?></td>
         </tr>
-        <tr>
-            <td class="post_title"><?php echo $form->labelEx($model,'redirect_url'); ?></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td><?php echo zmf::config('attachDir'); ?><?php echo $form->textField($model,'redirect_url',array('class'=>'','value'=>$info['redirect_url'],'style'=>'width:600px')); ?></td><td><?php echo $form->error($model,'redirect_url'); ?></td>
-        </tr>        
         <script>
-    var imgUploadUrl="<?php echo Yii::app()->createUrl('attachments/upload',array('id'=>$info['id'],'type'=>'coverimg'));?>";  	
-    $(document).ready(
-    function(){    	
-    	myUploadify('<?php echo CHtml::activeId($model,"attachid");?>_upload','<?php echo CHtml::activeId($model,"attachid");?>',1);
-    });  
-</script>
-  <tr>
+            var imgUploadUrl="<?php echo Yii::app()->createUrl('attachments/upload',array('id'=>$info['id'],'type'=>'coverimg'));?>";  	
+            $(document).ready(
+            function(){    	
+                myUploadify('<?php echo CHtml::activeId($model,"attachid");?>_upload','<?php echo CHtml::activeId($model,"attachid");?>',1);
+            });  
+        </script>
+        <tr>
             <td class="post_title"><?php echo $form->labelEx($model,'attachid'); ?></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -71,6 +65,18 @@
             <td>
               <input type="hidden" id="file_upload_input"/>  
             </td>
+        </tr>        
+        <tr>
+            <td class="post_title"><?php echo $form->labelEx($model,'redirect_url'); ?></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><?php echo zmf::config('readAttachDir'); ?><?php echo $form->textField($model,'redirect_url',array('class'=>'','value'=>$info['redirect_url'],'style'=>'width:600px','onclick'=>'$("#redirect_url_dialog").dialog("open");return false;')); ?></td><td><?php echo $form->error($model,'redirect_url'); ?></td>
+        </tr>
+        <tr>
+            <td class="post_title"><?php echo $form->labelEx($model,'copy_url'); ?></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><?php echo zmf::config('downloadAttachDir'); ?><?php echo $form->textField($model,'copy_url',array('class'=>'','value'=>$info['copy_url'],'style'=>'width:600px','onclick'=>'$("#copy_url_dialog").dialog("open");return false;')); ?></td><td><?php echo $form->error($model,'copy_url'); ?></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -79,7 +85,33 @@
         </tr>
 </table>   
 </div><!-- form -->  
-
 <?php $this->endWidget(); ?>
-
+<?php
+$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+    'id' => 'redirect_url_dialog',
+    'options' => array(
+        'title' => '添加阅读地址',
+        'width' => 680,
+        'height' => 550,
+        'autoOpen' => false,
+    ),
+));
+$dir=zmf::config('readLocalDir');
+zmf::tree($dir,$dir,CHtml::activeId($model,"redirect_url"));
+$this->endWidget('zii.widgets.jui.CJuiDialog');
+?>
+<?php
+$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+    'id' => 'copy_url_dialog',
+    'options' => array(
+        'title' => '添加下载地址',
+        'width' => 680,
+        'height' => 550,
+        'autoOpen' => false,
+    ),
+));
+$dir2=zmf::config('downloadLocalDir');
+zmf::tree($dir2,$dir2,CHtml::activeId($model,"copy_url"));
+$this->endWidget('zii.widgets.jui.CJuiDialog');
+?>
 </fieldset>

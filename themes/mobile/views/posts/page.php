@@ -15,6 +15,16 @@
 <div class="clear cdata">
 <p class="intro"><?php echo $page['intro'];?></p>
 <p><?php echo $page['content'];?></p>
+<p class="link-btn">
+<?php        
+    if($page['redirect_url']!=''){
+        echo CHtml::link('阅读',zmf::config('readAttachDir').$page['redirect_url'],array('class'=>'btn-link red','target'=>'_blank'));
+    }                
+    if($page['copy_url']!=''){
+        echo CHtml::link('下载',zmf::config('downloadAttachDir').$page['copy_url'],array('class'=>'btn-link black','target'=>'_blank'));
+    }
+?>       
+</p>
 </div>
                   
 <div class="preNext">

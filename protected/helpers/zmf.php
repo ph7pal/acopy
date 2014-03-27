@@ -216,6 +216,52 @@ class zmf {
         }
     }
 
+    public static function listDir($path = '.', $dir = '', $field = '') {
+        $current_dir = opendir($path);
+        while (($file = readdir($current_dir)) !== false) {
+            $sub_dir = $path . DIRECTORY_SEPARATOR . $file;
+            if ($file == '.' || $file == '..') {
+                continue;
+            } else if (is_dir($sub_dir)) {
+                echo '-----------<br/>';
+                self::listDir($sub_dir, $dir, $field);
+            } else {
+                $fileDir = $path . '/' . $file;
+                if ($dir != '') {
+                    $fileDir = str_replace($dir, '', $fileDir);
+                    $fileDir = str_replace('\\', '/', $fileDir);
+                }
+                echo '<li style="font-size:12px;">' . $fileDir . '</li><br>';
+            }
+        }
+    }
+
+    public static function tree($directory, $dir = '', $field = '') {
+        $mydir = dir($directory);
+        $_arr = array('runtime');
+        $len = 40;
+        $upExt = self::config("readLocalFiles");
+        echo "<ul style='font-size:12px;'>\n";        
+        while ($file = $mydir->read()) {
+            $_len = strlen($file);            
+            if ((is_dir("$directory/$file")) AND ($file != ".") AND ($file != "..")) {
+                $_str = '';  
+                echo "<li><font color=\"#ff00cc\"><b>$file</b></font></li>\n";
+                self::tree("$directory/$file", $dir, $field);                
+            } elseif (($file != ".") AND ($file != "..")) {
+                $fileDir=$directory.'/'.$file;
+                $ext_arr=pathinfo($file);
+                $ext=$ext_arr['extension'];                
+                if (preg_match('/^(' . str_replace('*.', '|', str_replace(';', '', $upExt)) . ')$/i', $ext)) {
+                    $fileDir = substr(str_replace($dir, '', $fileDir),1);
+                    echo "<li><label><input type='radio' name='selectDir' onclick=\"$('#{$field}').val('{$fileDir}');\"/>$fileDir</label></li>\n";
+                } 
+            }
+        }
+        echo "</ul>\n";
+        $mydir->close();
+    }
+
     public static function filterInput($str, $type = 'n', $textonly = false) {
         if ($textonly) {
             $str = strip_tags(trim($str));

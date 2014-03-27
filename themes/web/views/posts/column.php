@@ -5,11 +5,10 @@
     <div class="scrollBox">
       <div class="goodsImage">
         <ul class="list" >
-        	<?php 
-                $listposts=Posts::listPosts($info['id'],'id,title,redirect_url,copy_url,cTime',0);
+        	<?php                 
                 if(!empty($listposts)){
                 foreach($listposts as $key=>$_list){
-                   $faceImg=  Attachments::getFaceImg($_list['id']); 
+                   $faceImg=  Attachments::getFaceImg($_list['id'],'columns');                    
                     ?>
             <li>
                 <p>
@@ -22,13 +21,8 @@
                 <span>
                     <?php echo CHtml::link(zmf::subStr($_list['title'],10),array('posts/show','id'=>$_list['id']),array('target'=>'_blank'));?>
                 <div class="post_meta">Posted at <?php echo date('Y/m/d',$_list['cTime']);?></div>                
-                <?php        
-                if($_list['redirect_url']!=''){
-                    echo CHtml::link('阅读',zmf::config('readAttachDir').$_list['redirect_url'],array('class'=>'arrow_link','target'=>'_blank'));
-                }                
-                if($_list['copy_url']!=''){
-                    echo CHtml::link('下载',zmf::config('downloadAttachDir').$_list['copy_url'],array('class'=>'arrow_link','target'=>'_blank'));
-                }
+                <?php
+                    echo CHtml::link('阅读',array('index/index','colid'=>$_list['id']),array('class'=>'arrow_link','target'=>'_blank'));
                 ?>                
                 </span>
             </li> 
@@ -36,7 +30,7 @@
             <?php if(($key+1)%4==0){?>
             <div style="clear: both"></div>
             <?php }?>
-                    <?php }?>     
+           <?php }?>     
         </ul>
         </div>
     </div>

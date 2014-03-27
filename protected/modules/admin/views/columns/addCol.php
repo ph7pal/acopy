@@ -30,7 +30,11 @@
             <td class="post_title"><?php echo $form->labelEx($model,'belongid'); ?></td><td>&nbsp;</td>
         </tr>
         <tr>
-            <td><?php echo $form->dropDownList($model,'belongid',$cols,array('options' => array($info['belongid']=>array('selected'=>true)))); ?></td><td><?php echo $form->error($model,'belongid'); ?></td>
+            <td>
+                <?php echo Chtml::hiddenField('belongid',$info['belongid']); ?>
+                <?php echo CHtml::dropDownList('columnid','',$cols,array('onchange'=>'ajaxAddColumn("Columns");','options' => array($info['belongid']=>array('selected'=>true)))); ?>                
+                <span id="addPostsCol"></span></td><td><?php echo $form->error($model,'belongid'); ?>
+            </td>
         </tr>
         <tr>
             <td class="post_title"><?php echo $form->labelEx($model,'classify'); ?></td><td>&nbsp;</td>

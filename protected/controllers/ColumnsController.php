@@ -25,7 +25,7 @@ class ColumnsController extends H {
     public function actionGet() {
         $keyid = $_POST['c'];
         $table = $_POST['t'];
-        if (!in_array($table, array('Posts'))) {
+        if (!in_array($table, array('Posts','Columns'))) {
             $this->jsonOutPut(0, '不允许的操作');
         }
         if ($keyid == 0 OR $keyid == 'undefined') {

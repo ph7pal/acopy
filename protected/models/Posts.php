@@ -21,8 +21,8 @@ class Posts extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('title,colid,redirect_url', 'required'),
-            array('copy_url', 'url'),
+            array('title,colid', 'required'),
+            //array('copy_url', 'url'),
             array('colid, albumid, reply_allow, status ,attachid', 'numerical', 'integerOnly' => true),
             array('uid, hits, order, last_update_time, cTime', 'length', 'max' => 10),
             array('nickname', 'length', 'max' => 30),
@@ -66,8 +66,8 @@ class Posts extends CActiveRecord {
             'intro' => '摘要',
             'content' => '正文',
             'copy_from' => '来源',
-            'copy_url' => '来源网址',
-            'redirect_url' => '跳转地址',
+            'copy_url' => '下载地址',
+            'redirect_url' => '阅读地址',
             'hits' => 'Hits',
             'order' => '排序',
             'reply_allow' => '允许评论',

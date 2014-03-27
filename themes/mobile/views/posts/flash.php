@@ -2,7 +2,7 @@
     <p><?php echo $info['title']; ?></p>
 </div>
 <?php
-$listposts = Posts::listPosts($info['id'],'id,title,redirect_url,cTime',0);
+$listposts = Posts::listPosts($info['id'],'id,title,redirect_url,copy_url,cTime',0);
 if (!empty($listposts)) {
     foreach ($listposts as $key => $_list) {
         $faceImg = Attachments::getFaceImg($_list['id']);
@@ -24,12 +24,14 @@ if (!empty($listposts)) {
                     <span><?php echo date('Y/m/d', $_list['cTime']); ?></span>                
                 </li>
                 <li class="dl-btn">
-                    <?php
-                        echo CHtml::link('阅读',array('posts/show','id'=>$_list['id']));
-                        if($_list['redirect_url']!=''){
-                            echo CHtml::link('下载',zmf::config('attachDir').$_list['redirect_url'],array('target'=>'_blank'));
-                        }
-                    ?>  
+                    <?php        
+                    if($_list['redirect_url']!=''){
+                        echo CHtml::link('阅读',zmf::config('readAttachDir').$_list['redirect_url'],array('class'=>'arrow_link','target'=>'_blank'));
+                    }                
+                    if($_list['copy_url']!=''){
+                        echo CHtml::link('下载',zmf::config('downloadAttachDir').$_list['copy_url'],array('class'=>'arrow_link','target'=>'_blank'));
+                    }
+                    ?>       
                 </li>
             </ul>
         </div>
