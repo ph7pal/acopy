@@ -164,26 +164,39 @@ class UsersController extends H {
                 'powers' => 'zmf',
                 'status' => 1
             );
-            $powers = array_unique(array_filter($_POST['powers']));
+            $powers = $_POST['powers'];
             $model->attributes = $intoData;
             if ($model->validate()) {
                 if ($model->updateByPk($thekeyid, $intoData)) {
                     if (!empty($powers)) {
+                        GroupPowers::model()->deleteAll("gid=$thekeyid");
                         foreach ($powers as $p) {
-                            if (!GroupPowers::model()->findByAttributes(array('powers' => $p), 'gid=:gid', array(':gid' => $thekeyid))) {
-                                $_data = array(
-                                    'gid' => $thekeyid,
-                                    'powers' => $p
-                                );
-                                $model = new GroupPowers();
-                                $model->attributes = $_data;
-                                $model->save();
-                            }
+                            $_data = array(
+                                'gid' => $thekeyid,
+                                'powers' => $p
+                            );
+                            $model = new GroupPowers();
+                            $model->attributes = $_data;
+                            $model->save();
                         }
                     }
                     UserAction::record('editusergroup', $thekeyid);
                     zmf::delFCache("notSaveGroup{$uid}");
                     $this->redirect(array('users/group'));
+                }else{
+                    if (!empty($powers)) {
+                        GroupPowers::model()->deleteAll("gid=$thekeyid");
+                        foreach ($powers as $p) {
+                            $_data = array(
+                                'gid' => $thekeyid,
+                                'powers' => $p
+                            );
+                            $model = new GroupPowers();
+                            $model->attributes = $_data;
+                            $model->save();
+                        }
+                    }
+                    UserAction::record('editusergroup', $thekeyid);
                 }
             }
         }
