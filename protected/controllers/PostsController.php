@@ -95,6 +95,29 @@ class PostsController extends T {
         $this->pageTitle = $info['title'] . ' - ' . $colinfo['title'] . ' - ' . zmf::config('sitename');
         $this->render('page', $data);
     }
+    
+    public function actionRead() {
+        $keyid = zmf::filterInput($_GET['id']);
+        if (!$keyid) {
+            $this->message(0, '请选择要查看的页面');
+        }
+        $info = Posts::model()->findByPk($keyid);
+        if (!$info) {
+            $this->message(0, '您所查看的文章不存在，请核实');
+        } elseif ($info['status'] < 1) {
+            $this->message(0, '您要查看的文章未通过审核');
+        }  
+        Posts::model()->updateCounters(array('hits' => 1), ':id=id', array(':id' => $keyid));
+        $colinfo = Columns::model()->findByPk($info['colid']);
+        $listposts=Posts::listPosts($info['colid'],'id,title,redirect_url,copy_url,cTime',0);
+        $data = array(
+            'listposts' => $listposts,
+            'page' => $info,
+            'info' => $colinfo,
+        );
+        $this->pageTitle = $info['title'] . ' - ' . $colinfo['title'] . ' - ' . zmf::config('sitename');
+        $this->renderPartial('iframe', $data);
+    }
 
     public function actionDownload() {
         $keyid = zmf::filterInput($_GET['id']);

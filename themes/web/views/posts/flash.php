@@ -13,9 +13,9 @@
                     ?>
             <li>
                 <p>
-                    <a href="<?php echo Yii::app()->createUrl('posts/show',array('id'=>$_list['id']));?>">
+                    <a href="<?php echo Yii::app()->createUrl('posts/read',array('id'=>$_list['id']));?>">
                         <?php if(!empty($faceImg)){?>
-                    <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '300').'/'.$faceImg['filePath'];?>"/>
+                    <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '124').'/'.$faceImg['filePath'];?>"/>
                         <?php }else{ echo zmf::noImg();}?>
                     </a>
                 </p>                    
