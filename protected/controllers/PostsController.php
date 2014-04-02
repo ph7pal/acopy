@@ -109,7 +109,7 @@ class PostsController extends T {
         }  
         Posts::model()->updateCounters(array('hits' => 1), ':id=id', array(':id' => $keyid));
         $colinfo = Columns::model()->findByPk($info['colid']);
-        $listposts=Posts::listPosts($info['colid'],'id,title,redirect_url,copy_url,cTime',0);
+        $listposts=Posts::listPosts($info['colid'],'id,title,redirect_url,copy_url,cTime',12,$keyid);
         $data = array(
             'listposts' => $listposts,
             'page' => $info,

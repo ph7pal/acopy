@@ -15,16 +15,16 @@
                 <p>
                     <a href="<?php echo Yii::app()->createUrl('posts/read',array('id'=>$_list['id']));?>">
                         <?php if(!empty($faceImg)){?>
-                    <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '124').'/'.$faceImg['filePath'];?>"/>
+                    <img src="<?php echo zmf::uploadDirs($faceImg['logid'], 'site', $faceImg['classify'], '300').'/'.$faceImg['filePath'];?>"/>
                         <?php }else{ echo zmf::noImg();}?>
                     </a>
                 </p>                    
                 <span>
-                    <?php echo CHtml::link(zmf::subStr($_list['title'],10),array('posts/show','id'=>$_list['id']),array('target'=>'_blank'));?>
+                    <?php echo CHtml::link(zmf::subStr($_list['title'],10),array('posts/read','id'=>$_list['id']),array('target'=>'_blank'));?>
                 <div class="post_meta">Posted at <?php echo date('Y/m/d',$_list['cTime']);?></div>                
                 <?php        
                 if($_list['redirect_url']!=''){
-                    echo CHtml::link('阅读',zmf::config('readAttachDir').$_list['redirect_url'],array('class'=>'arrow_link','target'=>'_blank'));
+                    echo CHtml::link('阅读',array('posts/read','id'=>$_list['id']),array('class'=>'arrow_link','target'=>'_blank'));
                 }                
                 if($_list['copy_url']!=''){
                     echo CHtml::link('下载',zmf::config('downloadAttachDir').$_list['copy_url'],array('class'=>'arrow_link','target'=>'_blank'));

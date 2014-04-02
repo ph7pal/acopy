@@ -26,8 +26,8 @@ return array(
 'perPageNum'=> '10',
 'readLocalDir'=> 'D:\\AppServ\\www\\acopy\\protected/../attachments/',
 'readAttachDir'=> 'http://localhost/acopy/attachments/',
-'downloadLocalDir'=> 'D:\\\\AppServ\\\\www\\\\acopy\\\\protected/../attachments/ads/',
-'downloadAttachDir'=> 'http://localhost/acopy/attachments/ads/',
-'readLocalFiles'=> '*.jpg;*.png;*.jpeg;*.chm',
+'downloadLocalDir'=> 'D:\\\\\\\\AppServ\\\\\\\\www\\\\\\\\acopy\\\\\\\\protected/../attachments/',
+'downloadAttachDir'=> 'http://localhost/acopy/attachments/',
+'readLocalFiles'=> '*.html;*.htm;*.exe',
 );
 ?>
