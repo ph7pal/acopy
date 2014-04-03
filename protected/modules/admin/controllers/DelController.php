@@ -28,7 +28,7 @@ class DelController extends H {
                 $this->message(0, '请选择需要操作的对象');
             }
         }
-        if (!in_array($table, array('ads', 'album', 'attachments', 'columns', 'comments', 'questions', 'tags', 'posts', 'link', 'users', 'usergroup'))) {
+        if (!in_array($table, array('ads','columns',  'posts', 'link', 'users', 'usergroup'))) {
             $this->message(0, '不被允许的操作，请核实');
         }
         $this->checkPower('del' . $table);
@@ -38,6 +38,7 @@ class DelController extends H {
         $link = new Link();
         $users = new Users();
         $usergroup = new UserGroup();
+        $columns=new Columns();
         if ($multi) {
             foreach ($ids as $val) {
                 $info = $$table->findByPk($val);

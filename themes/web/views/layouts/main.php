@@ -66,11 +66,7 @@ background: url(<?php echo zmf::config('baseurl').zmf::config('logo');?>) no-rep
                 <a href="<?php echo $link['url'];?>" target="_blank"><?php echo $link['title'];?></a>            
             <?php }?>
             </p>
-            <?php }?>
-      <p>
-      	<?php $address=zmf::config('address');if(!empty($address)){ echo '地址：'.$address;}?>
-      	<?php $phone=zmf::config('phone');if(!empty($phone)){ echo '电话：'.$phone;}?>
-      	</p>      
+            <?php }?>     
       <p>
           <a href="<?php echo zmf::config('domain');?>" target="_blank"><?php echo zmf::config('sitename');?></a>
           <?php echo zmf::config('copyright');?>
