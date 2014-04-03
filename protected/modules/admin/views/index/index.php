@@ -8,7 +8,7 @@
 </head>
 <body scroll="no">
 <div class="header">
-  <div class="logo">newsoul.cn</div>
+  <div class="logo"><img src="<?php echo zmf::config('baseurl').zmf::config('logo');?>"/></div>
   <div class="nav">
     <ul>
       <?php $usersbar=GroupPowers::adminBar();

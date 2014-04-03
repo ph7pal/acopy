@@ -3,7 +3,7 @@
 <head>	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="<?php echo $this->_baseUrl?>/common/admin/login.css" />
-<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<title><?php echo zmf::config('sitename');?> 管理中心</title>
 <script type="text/javascript" language="javascript">
     //<![CDATA[
     // show login form in top frame
