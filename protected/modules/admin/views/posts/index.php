@@ -19,11 +19,17 @@
             <?php foreach ($posts as $row): ?> 
                 <tr>
                     <td><label class="checkbox-inline"><?php echo CHtml::checkBox('ids[]', '', array('value' => $row['id'])); ?></label></td>
-                    <?php $_title=Columns::getOne($row['colid'],'title'); ?>
-                    <td><?php echo'【'.$_title.'】'.$row['title']; ?></td>
+                    <?php $_info=Columns::getOne($row['colid']); ?>
+                    <td><?php echo'【'.$_info['title'].'】'.$row['title']; ?></td>
                     <td><?php echo zmf::exStatus($row['status']); ?></td>
                     <td>
-                        <?php echo CHtml::link('浏览', array('/posts/read', 'id' => $row['id']),array('target'=>'_blank')); ?>
+                        <?php 
+                        if($_info['classify']=='page'){
+                        	echo CHtml::link('浏览', array('/posts/index', 'colid' => $_info['id']),array('target'=>'_blank')); 
+                        }else{
+                        	echo CHtml::link('浏览', array('/posts/read', 'id' => $row['id']),array('target'=>'_blank')); 
+                        	}                        
+                        ?>
                         <?php echo CHtml::link('编辑', array($table . '/add', 'id' => $row['id'], 'edit' => 'yes')); ?>
                         <?php echo CHtml::link('删除', array('del/sth', 'table' => $table, 'id' => $row['id'], 'single' => 'yes')); ?>
                     </td>

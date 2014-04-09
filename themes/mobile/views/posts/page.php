@@ -13,7 +13,7 @@
 <?php }?>
 
 <div class="clear cdata">
-<p class="intro"><?php echo $page['intro'];?></p>
+<p class="intro"><?php echo nl2br($page['intro']);?></p>
 <p><?php echo $page['content'];?></p>
 <p class="link-btn">
 <?php        
@@ -27,19 +27,15 @@
 </p>
 </div>
                   
-<div class="preNext">
-    <p>上一篇：
+<div class="preNext">    
         <?php if(!empty($preInfo)){?>
+        <p>上一篇：
         <?php echo CHtml::link($preInfo['title'],array('posts/show','id'=>$preInfo['id']));?>
-        <?php }else{?>
-        没有了
-        <?php }?>                            
-    </p>
-    <p>下一篇：
+        </p>
+        <?php }?>  
         <?php if(!empty($nextInfo)){?>
+        <p>下一篇：
         <?php echo CHtml::link($nextInfo['title'],array('posts/show','id'=>$nextInfo['id']));?>
-        <?php }else{?>
-        没有了
-        <?php }?> 
-    </p>
+		</p>
+        <?php }?>
 </div>

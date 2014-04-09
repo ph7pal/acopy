@@ -30,12 +30,12 @@
                     <?php $attachinfo=  Attachments::getFaceImg($page['id']);if($attachinfo){?>
                     <div class="clear cfaceimg">
                         <a href="<?php echo zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']);?>">
-                        <?php echo '<img src="'.zmf::imgurl($page['id'],$attachinfo['filePath'],'600',$attachinfo['classify']).'" alt="'.$page['title'].'的封面" title="'.$page['title'].'"/>';?>
+                        <?php echo '<img src="'.zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']).'" alt="'.$page['title'].'的封面" title="'.$page['title'].'"/>';?>
                         </a>
                     </div>    
                     <?php }?>
 			<div class="clear cdata">
-                            <p class="intro"><?php echo $page['intro'];?></p>
+                            <p class="intro"><?php echo nl2br($page['intro']);?></p>
                             <p><?php echo $page['content'];?></p>
                             <p class="link-btn">
                                 <?php        
@@ -48,21 +48,17 @@
                                 ?>       
                             </p>
 			</div>                        
-                        <div class="preNext clear">
-                            <em class="floatL">上一篇：
+                        <div class="preNext clear">                            
                                 <?php if(!empty($preInfo)){?>
+                                <em class="floatL">上一篇：
                                 <?php echo CHtml::link($preInfo['title'],array('posts/show','id'=>$preInfo['id']));?>
-                                <?php }else{?>
-                                没有了
-                                <?php }?>                            
-                            </em>
-                            <em class="floatR">下一篇：
+                                </em>
+                                <?php }?>  
                                 <?php if(!empty($nextInfo)){?>
+                                <em class="floatR">下一篇：
                                 <?php echo CHtml::link($nextInfo['title'],array('posts/show','id'=>$nextInfo['id']));?>
-                                <?php }else{?>
-                                没有了
-                                <?php }?> 
-                            </em>
+                                </em>
+                                <?php }?>                             
                         </div>
 		</div>
 	</div>	

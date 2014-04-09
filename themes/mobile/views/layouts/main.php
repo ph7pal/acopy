@@ -15,14 +15,15 @@
     </head>
     <body>
     	<style>
-			.logo {
-			background: url(<?php echo zmf::config('baseurl').zmf::config('logo');?>) no-repeat center center;
+			.logo img {
+			max-width:270px;
+			margin-top:15px;
 			}
 		</style>
         <div class="zmf">
             <!--头-->
             <div id="header" class="header">
-                <a href="<?php echo Yii::app()->homeUrl;?>"><div class="logo"></div></a>
+                <a href="<?php echo Yii::app()->homeUrl;?>"><div class="logo"><img src="<?php echo zmf::config('baseurl').zmf::config('logo');?>"/></div></a>
                 <ul class="nav">
                     <li><a href="<?php echo Yii::app()->homeUrl ?>"><h3>首页</h3></a></li>
                     <?php

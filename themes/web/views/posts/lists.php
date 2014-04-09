@@ -9,7 +9,12 @@
                             <li class="clear">	
                                 <h2>			
                                 <p class="y"><span class="date"><?php echo date('Y-m-d H:i',$row['cTime']);?></span></p>
-                                <?php echo CHtml::link('【'.Columns::getOne($row['colid'],'title').'】'.$row['title'],array('posts/read','id'=>$row['id']),array('class'=>'title','target'=>'_blank'));?>
+                              <?php 
+                              if($row['redirect_url']!=''){
+                              		echo CHtml::link('【'.Columns::getOne($row['colid'],'title').'】'.$row['title'],zmf::config('readAttachDir').$row['redirect_url'],array('class'=>'title','target'=>'_blank'));
+                              	}else{
+                              		echo '【'.Columns::getOne($row['colid'],'title').'】'.$row['title'];
+                              	}?>
                                 </h2>						
                             </li>
                         <?php endforeach;?>
