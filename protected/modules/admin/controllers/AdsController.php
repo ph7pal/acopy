@@ -6,8 +6,7 @@ class AdsController extends H {
 
     public function actionIndex() {
         $criteria = new CDbCriteria();
-        $criteria->order='id desc';
-        $criteria->addCondition('status=1');
+        $criteria->order='id desc';        
         $count = Ads::model()->count($criteria);
         $pager = new CPagination($count);
         $pager->pageSize = 10;

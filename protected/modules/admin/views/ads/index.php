@@ -24,6 +24,7 @@
                     <td><?php echo $row['url']; ?></td>
                     <td><?php echo zmf::colPositions($row['position']); ?></td>
                     <td>
+                    	<?php $this->renderPartial('/common/manageBar',array('status'=>$row['status'],'keyname'=>'keyid','keyid'=>$row['id'],'table'=>$table));?>
                         <?php echo CHtml::link('编辑', array($table . '/add', 'id' => $row['id'], 'edit' => 'yes')); ?>
                         <?php echo CHtml::link('删除', array('del/sth', 'table' => $table, 'id' => $row['id'], 'single' => 'yes')); ?>
 

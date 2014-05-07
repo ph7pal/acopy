@@ -30,6 +30,7 @@
                         	echo CHtml::link('浏览', array('/posts/read', 'id' => $row['id']),array('target'=>'_blank')); 
                         	}                        
                         ?>
+                        <?php $this->renderPartial('/common/manageBar',array('status'=>$row['status'],'keyname'=>'keyid','keyid'=>$row['id'],'table'=>$table));?>
                         <?php echo CHtml::link('编辑', array($table . '/add', 'id' => $row['id'], 'edit' => 'yes')); ?>
                         <?php echo CHtml::link('删除', array('del/sth', 'table' => $table, 'id' => $row['id'], 'single' => 'yes')); ?>
                     </td>
