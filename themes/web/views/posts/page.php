@@ -27,16 +27,17 @@
                         </p>
 			</div>
                     
-                    <?php $attachinfo=  Attachments::getFaceImg($page['id']);if($attachinfo){?>
-                    <div class="clear cfaceimg">
-                        <a href="<?php echo zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']);?>">
-                        <?php echo '<img src="'.zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']).'" alt="'.$page['title'].'的封面" title="'.$page['title'].'"/>';?>
-                        </a>
-                    </div>    
-                    <?php }?>
+                   
 			<div class="clear cdata">
-                            <p class="intro"><?php echo nl2br($page['intro']);?></p>
-                            <p><?php echo $page['content'];?></p>
+                            <p class="intro"><?php echo nl2br($page['intro']);?></p>                            
+                             <?php $attachinfo=  Attachments::getFaceImg($page['id']);if($attachinfo){?>
+		                    <div class="clear cfaceimg <?php if($info['classify']=='page'){ echo 'pageface';}?>">
+		                        <a href="<?php echo zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']);?>">
+		                        <?php echo '<img src="'.zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']).'" alt="'.$page['title'].'的封面" title="'.$page['title'].'"/>';?>
+		                        </a>
+		                    </div>    
+		                    <?php }?>
+		                    <p><?php echo $page['content'];?></p>
                             <p class="link-btn">
                                 <?php        
                                 if($page['redirect_url']!=''){

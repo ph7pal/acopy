@@ -4,6 +4,8 @@
 <span class="split">|</span> 
 查看：<?php echo $page['hits'];?>
 </p>
+<div class="clear cdata">
+<p class="intro"><?php echo nl2br($page['intro']);?></p>
 <?php $attachinfo=  Attachments::getFaceImg($page['id']);if($attachinfo){?>
 <div class="cfaceimg">
     <a href="<?php echo zmf::imgurl($page['id'],$attachinfo['filePath'],'origin',$attachinfo['classify']);?>">
@@ -11,9 +13,6 @@
     </a>
 </div>    
 <?php }?>
-
-<div class="clear cdata">
-<p class="intro"><?php echo nl2br($page['intro']);?></p>
 <p><?php echo $page['content'];?></p>
 <p class="link-btn">
 <?php        
